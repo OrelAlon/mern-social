@@ -77,7 +77,7 @@ router.get("/timeline/:userId", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+//1:20
 // get all posts
 router.get("/profile/:username", async (req, res) => {
   try {
