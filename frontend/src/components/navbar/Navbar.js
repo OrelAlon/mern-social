@@ -1,5 +1,7 @@
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+import me from "../../assets/users/me.png";
+
 import "./navbar.css";
 
 function Navbar() {
@@ -35,6 +37,10 @@ function Navbar() {
             <span className='topbarIconBadge'>1</span>
           </div>
         </div>
+        <div>
+          <img src={me} alt='' className='topbarImg' />
+        </div>
+
         {/* <Link to={`/profile/${user.username}`}>
           <img
             src={
