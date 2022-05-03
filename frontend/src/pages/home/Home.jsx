@@ -1,15 +1,20 @@
 import Navbar from "../../components/navbar/Navbar";
 import Leftbar from "../../components/sidebar/Leftbar";
-import RightBar from "../../components/rightBar/RightBar";
+import Rightbar from "../../components/rightbar/Rightbar";
+import Feed from "../../components/feed/Feed";
 
-import { Person } from "@material-ui/icons";
+import "./home.css";
 
 const Home = () => {
   return (
-    <div>
+    <>
       <Navbar />
-      <Leftbar /> <RightBar />
-    </div>
+      <div className='homeContainer'>
+        <Leftbar />
+        <Feed />
+        <Rightbar />
+      </div>
+    </>
   );
 };
 

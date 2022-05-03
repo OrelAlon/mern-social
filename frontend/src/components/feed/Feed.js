@@ -1,10 +1,18 @@
 import Share from "../share/Share";
+import Post from "../post/Post";
+import { Posts } from "../../dummyData";
 import "./feed.css";
 
-export default function Feed({ username }) {
+const Feed = ({ username }) => {
   return (
     <div className='feed'>
-      <div className='feedWrapper'></div>
+      <div className='feedWrapper'>
+        <Share />
+        {Posts.map((p) => (
+          <Post key={p.id} post={p} />
+        ))}
+      </div>
     </div>
   );
-}
+};
+export default Feed;

@@ -3,7 +3,7 @@ import { Add, Remove } from "@material-ui/icons";
 
 import "./rightbar.css";
 
-const RightBar = ({ user }) => {
+const Rightbar = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   const HomeRightbar = () => {
@@ -12,7 +12,7 @@ const RightBar = ({ user }) => {
         <div className='birthdayContainer'>
           <img className='birthdayImg' src='assets/gift.png' alt='' />
           <span className='birthdayText'>
-            <b>Pola Foster</b> and <b>3 other friends</b> have a birhday today.
+            <b>some text</b> and <b>3 other friends</b> have a birhday today.
           </span>
         </div>
         <img className='rightbarAd' src='assets/ad.png' alt='' />
@@ -60,4 +60,4 @@ const RightBar = ({ user }) => {
   );
 };
 
-export default RightBar;
+export default Rightbar;

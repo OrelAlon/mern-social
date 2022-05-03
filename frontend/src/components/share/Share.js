@@ -19,7 +19,7 @@ const Share = () => {
         </div>
         <hr className='shareHr' />
 
-        <form className='shareBottom' onSubmit={submitHandler}>
+        <form className='shareBottom'>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               <PermMedia htmlColor='tomato' className='shareIcon' />
