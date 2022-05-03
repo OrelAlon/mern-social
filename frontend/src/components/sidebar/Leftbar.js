@@ -12,7 +12,6 @@ import {
 import "./leftbar.css";
 
 import { Users } from "../../dummyData";
-import CloseFriend from "../closeFriend/CloseFriend";
 
 const Leftbar = () => {
   return (
@@ -58,11 +57,6 @@ const Leftbar = () => {
         </ul>
         <button className='leftbarButton'>Show More</button>
         <hr className='leftbarHr' />
-        <ul className='leftbarFriendList'>
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul>
       </div>
     </div>
   );
