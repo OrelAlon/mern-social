@@ -1,5 +1,6 @@
 import { Users } from "../../dummyData";
 import { Add, Remove } from "@material-ui/icons";
+import Online from "../online/Online";
 
 import "./rightbar.css";
 
@@ -17,7 +18,11 @@ const Rightbar = ({ user }) => {
         </div>
         <img className='rightbarAd' src='assets/ad.png' alt='' />
         <h4 className='rightbarTitle'>Online Friends</h4>
-        <ul className='rightbarFriendList'></ul>
+        <ul className='rightbarFriendList'>
+          {Users.map((u) => (
+            <Online key={u.id} user={u} />
+          ))}
+        </ul>{" "}
       </>
     );
   };
