@@ -8,9 +8,9 @@ function Navbar() {
   return (
     <div className='topbarContainer'>
       <div className='topbarLeft'>
-        {/* <Link to='/' style={{ textDecoration: "none" }}> */}
-        <span className='logo'>Food - Social</span>
-        {/* </Link> */}
+        <Link to='/' style={{ textDecoration: "none" }}>
+          <span className='logo'>Social - Food</span>
+        </Link>
       </div>
       <div className='topbarCenter'>
         <div className='searchbar'>

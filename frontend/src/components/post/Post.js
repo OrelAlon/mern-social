@@ -10,7 +10,7 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  console.log(PF);
+
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
