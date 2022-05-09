@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./login.css";
+import "./register.css";
 
-const Login = () => {
+const Register = () => {
   const handleClick = (e) => {
     e.preventDefault();
   };
@@ -19,29 +19,37 @@ const Login = () => {
         <div className='loginRight'>
           <form className='loginBox' onSubmit={handleClick}>
             <input
-              placeholder='Email'
-              type='email'
+              placeholder='Username'
               required
+              //   ref={username}
               className='loginInput'
-              // ref={email}
+            />
+            <input
+              placeholder='Email'
+              required
+              //   ref={email}
+              className='loginInput'
+              type='email'
             />
             <input
               placeholder='Password'
-              type='password'
               required
-              minLength='6'
+              //   ref={password}
               className='loginInput'
-              // ref={password}
+              type='password'
+              minLength='6'
             />
-            <button
-              className='loginButton'
-              type='submit'
-              // disabled={isFetching}
-            >
-              Login
+            <input
+              placeholder='Password Again'
+              required
+              //   ref={passwordAgain}
+              className='loginInput'
+              type='password'
+            />
+            <button className='loginButton' type='submit'>
+              Sign Up
             </button>
-            <span className='loginForgot'>Forgot Password?</span>
-            <button className='loginRegisterButton'>Forgot</button>
+            <button className='loginRegisterButton'>Log into Account</button>
           </form>
         </div>
       </div>
@@ -49,4 +57,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
