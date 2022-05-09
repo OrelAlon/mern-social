@@ -3,6 +3,8 @@ import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 
+import { Users } from "../../dummyData";
+
 import "./profile.css";
 
 const Profile = () => {
@@ -18,20 +20,16 @@ const Profile = () => {
             <div className='profileCover'>
               <img
                 className='profileCoverImg'
-                // src={
-                //   user.coverPicture
-                //     ? PF + user.coverPicture
-                //     : PF + "person/noCover.png"
-                // }
+                src={Users[0].coverPicture}
                 alt=''
               />
               <img
                 className='profileUserImg'
-                // src={
-                //   user.profilePicture
-                //     ? PF + user.profilePicture
-                //     : PF + "person/noAvatar.png"
-                // }
+                src={
+                  Users.profilePicture
+                    ? Users.profilePicture
+                    : Users[0].profilePicture
+                }
                 alt=''
               />
             </div>
@@ -41,8 +39,8 @@ const Profile = () => {
             </div>
           </div>
           <div className='profileRightBottom'>
-            {/* <Feed username={username} />
-            <Rightbar user={user} /> */}
+            <Feed />
+            <Rightbar />
           </div>
         </div>
       </div>

@@ -4,6 +4,8 @@ export const Users = [
     profilePicture:
       "https://media.moddb.com/cache/images/members/5/4550/4549205/thumb_620x2000/duck.jpg",
     username: "orel alon",
+    coverPicture:
+      "https://raw.githubusercontent.com/safak/youtube/mern-social-app/client/public/assets/person/noCover.png",
   },
   {
     id: 2,
@@ -27,6 +29,11 @@ export const Users = [
     id: 5,
     profilePicture: "https://pbs.twimg.com/media/D8Dp0c5WkAAkvME.jpg",
     username: "tom zilberman",
+  },
+  {
+    id: 0,
+    coverPicture:
+      "https://raw.githubusercontent.com/safak/youtube/mern-social-app/client/public/assets/person/noCover.png",
   },
 ];
 
