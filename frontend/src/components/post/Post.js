@@ -6,6 +6,8 @@ import likePic from "../../assets/like.png";
 import "./post.css";
 
 const Post = ({ post }) => {
+  console.log(post);
+  console.log(Users);
   const [like, setLike] = useState(post.like);
   const [isLiked, setIsLiked] = useState(false);
 
