@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");

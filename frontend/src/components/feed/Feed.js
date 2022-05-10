@@ -6,14 +6,14 @@ import Share from "../share/Share";
 import Post from "../post/Post";
 import "./feed.css";
 
-const Feed = () => {
+const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
   const [text, setText] = useState("");
-
+  username = "orel";
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await axios.get(
-        "http://localhost:8000/api/posts/timeline/626fdc6db627e8f67b02d594"
+        "http://localhost:8000/api/posts/profile/orel"
       );
       console.log(res);
     };

@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
+const User = require("../models/User");
 
 // create post
 router.post("/", async (req, res) => {
@@ -63,13 +64,13 @@ router.put("/:id/like", async (req, res) => {
 });
 
 // get post
-router.get("/timeline/all", async (req, res) => {
+router.get("/timeline/:userId", async (req, res) => {
   try {
-    const currentUser = await User.findById(req.body.userId);
+    const currentUser = await User.findById(req.params.userId);
     const userPosts = await Post.find({ userId: currentUser._id });
     const friendPosts = await Promise.all(
       currentUser.followings.map((friendId) => {
-        return Post.find({ userId: friendId });
+        return console.log("dkdk");
       })
     );
     res.status(200).json(userPosts.concat(...friendPosts));
@@ -77,7 +78,7 @@ router.get("/timeline/all", async (req, res) => {
     res.status(500).json("not workingggg");
   }
 });
-//1:20
+//3 => 43
 // get all posts
 router.get("/profile/:username", async (req, res) => {
   try {
@@ -85,7 +86,7 @@ router.get("/profile/:username", async (req, res) => {
     const posts = await Post.find({ userId: user._id });
     res.status(200).json(posts);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json("kdskd");
   }
 });
 
