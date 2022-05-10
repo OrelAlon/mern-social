@@ -1,3 +1,8 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router";
+
+import axios from "axios";
+
 import Navbar from "../../components/navbar/Navbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
@@ -8,7 +13,16 @@ import { Users } from "../../dummyData";
 import "./profile.css";
 
 const Profile = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [user, setUser] = useState({});
+  const username = useParams().username;
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const res = await axios.get(`/users?username=${username}`);
+      setUser(res.data);
+    };
+    fetchUser();
+  }, []);
 
   return (
     <>
@@ -18,29 +32,21 @@ const Profile = () => {
         <div className='profileRight'>
           <div className='profileRightTop'>
             <div className='profileCover'>
-              <img
-                className='profileCoverImg'
-                src={Users[0].coverPicture}
-                alt=''
-              />
+              <img className='profileCoverImg' src={user.coverPicture} alt='' />
               <img
                 className='profileUserImg'
-                src={
-                  Users.profilePicture
-                    ? Users.profilePicture
-                    : Users[0].profilePicture
-                }
+                src={user.profilePicture}
                 alt=''
               />
             </div>
             <div className='profileInfo'>
-              {/* <h4 className='profileInfoName'>{user.username}</h4>
-              <span className='profileInfoDesc'>{user.desc}</span> */}
+              <h4 className='profileInfoName'>{user.username}</h4>
+              <span className='profileInfoDesc'>{user.desc}</span>
             </div>
           </div>
           <div className='profileRightBottom'>
-            <Feed />
-            <Rightbar />
+            <Feed username={username} />
+            <Rightbar user={user} />
           </div>
         </div>
       </div>
