@@ -8,14 +8,12 @@ import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
-  const [text, setText] = useState("");
-  username = "orel";
+
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get(
-        "http://localhost:8000/api/posts/profile/orel"
-      );
-      console.log(res);
+      const res = await axios.get("posts/timeline/627a42763c59736ae5254d4d");
+      setPosts(res.data);
+      console.log(res.data);
     };
     fetchPosts();
   }, []);
@@ -23,12 +21,10 @@ const Feed = ({ username }) => {
   return (
     <div className='feed'>
       <div className='feedWrapper'>
-        <input onChange={(e) => setText(e.target.value)}></input>
-
         <Share />
-        {/* {Posts.map((p) => (
-          <Post key={p.id} post={p} />
-        ))} */}
+        {posts.map((p) => (
+          <Post key={p._id} post={p} />
+        ))}
       </div>
     </div>
   );
