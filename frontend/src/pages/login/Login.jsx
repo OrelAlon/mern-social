@@ -5,16 +5,16 @@ import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 
 const Login = () => {
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const email = useRef();
+  const password = useRef();
   const { user, isFecthing, error, dispatch } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
     loginCall(
       {
-        emailRef: emailRef.current.value,
-        passwordRef: passwordRef.current.value,
+        email: email.current.value,
+        password: password.current.value,
       },
       dispatch
     );
@@ -36,7 +36,7 @@ const Login = () => {
               type='email'
               required
               className='loginInput'
-              ref={emailRef}
+              ref={email}
             />
             <input
               placeholder='Password'
@@ -44,7 +44,7 @@ const Login = () => {
               required
               minLength='6'
               className='loginInput'
-              ref={passwordRef}
+              ref={password}
             />
             <button
               className='loginButton'

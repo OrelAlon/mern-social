@@ -3,7 +3,7 @@ import AuthReducer from "./AuthReducer";
 
 const INITIAL_STATE = {
   user: null,
-  isFetching: false,
+  isFecthing: false,
   error: false,
 };
 
