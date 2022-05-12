@@ -1,10 +1,34 @@
-import React from "react";
+import axios from "axios";
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 import "./register.css";
 
 const Register = () => {
-  const handleClick = (e) => {
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  const passwordAgainRef = useRef();
+
+  const navigate = useNavigate();
+
+  const handleClick = async (e) => {
     e.preventDefault();
+    if (passwordRef.current.value !== passwordAgainRef.current.value) {
+      passwordAgainRef.current.setCustomValidity("Password don't match.");
+    } else {
+      const user = {
+        username: usernameRef.current.value,
+        email: emailRef.current.value,
+        password: passwordRef.current.value,
+      };
+      try {
+        await axios.post("/auth/register", user);
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -21,20 +45,20 @@ const Register = () => {
             <input
               placeholder='Username'
               required
-              //   ref={username}
+              ref={usernameRef}
               className='loginInput'
             />
             <input
               placeholder='Email'
               required
-              //   ref={email}
+              ref={emailRef}
               className='loginInput'
               type='email'
             />
             <input
               placeholder='Password'
               required
-              //   ref={password}
+              ref={passwordRef}
               className='loginInput'
               type='password'
               minLength='6'
@@ -42,7 +66,7 @@ const Register = () => {
             <input
               placeholder='Password Again'
               required
-              //   ref={passwordAgain}
+              ref={passwordAgainRef}
               className='loginInput'
               type='password'
             />
