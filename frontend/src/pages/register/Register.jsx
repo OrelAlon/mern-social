@@ -30,6 +30,9 @@ const Register = () => {
       }
     }
   };
+  const loginBtn = () => {
+    navigate("/login");
+  };
 
   return (
     <div className='login'>
@@ -73,7 +76,9 @@ const Register = () => {
             <button className='loginButton' type='submit'>
               Sign Up
             </button>
-            <button className='loginRegisterButton'>Log into Account</button>
+            <button className='loginRegisterButton' onClick={loginBtn}>
+              Log into Account
+            </button>
           </form>
         </div>
       </div>
