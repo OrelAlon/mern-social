@@ -6,8 +6,6 @@ import axios from "axios";
 import { format } from "timeago.js";
 import { MoreVert } from "@material-ui/icons";
 
-import heartPic from "../../assets/heart.png";
-import likePic from "../../assets/like.png";
 import "./post.css";
 
 const Post = ({ post }) => {
@@ -15,6 +13,7 @@ const Post = ({ post }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
   const { user: currentUser } = useContext(AuthContext);
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
@@ -44,7 +43,11 @@ const Post = ({ post }) => {
             <Link to={`/profile/${user.username}`}>
               <img
                 className='postProfileImg'
-                src={user.profilePicture}
+                src={
+                  user.profilePicture
+                    ? user.profilePicture
+                    : PF + "noAvatar.png"
+                }
                 alt=''
               />
             </Link>
@@ -57,19 +60,19 @@ const Post = ({ post }) => {
         </div>
         <div className='postCenter'>
           <span className='postText'>{post?.desc}</span>
-          <img className='postImg' src={post.img} alt='' />
+          <img className='postImg' src={PF + post.img} alt='' />
         </div>
         <div className='postBottom'>
           <div className='postBottomLeft'>
             <img
               className='likeIcon'
-              src={likePic}
+              src={`${PF}like.png`}
               onClick={likeHandler}
               alt=''
             />
             <img
               className='likeIcon'
-              src={heartPic}
+              src={`${PF}heart.png`}
               onClick={likeHandler}
               alt=''
             />
