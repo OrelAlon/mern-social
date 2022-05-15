@@ -6,7 +6,7 @@ const helmet = require("helmet");
 // const morgan = require("morgan");
 const multer = require("multer");
 const path = require("path");
-const router = express.Router();
+// const router = express.Router();
 
 // routes
 const userRoute = require("./routes/users");
@@ -19,6 +19,8 @@ mongoose.connect(process.env.MONGO_URL, () => {
   console.log("Connectes to MongoDB!!!!");
 });
 
+app.use("/images", express.static(path.join(__dirname, "public/images")));
+
 // middleware
 app.use(express.json());
 app.use(helmet());
@@ -29,7 +31,7 @@ const storage = multer.diskStorage({
     cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);
+    cb(null, req.body.name);
   },
 });
 

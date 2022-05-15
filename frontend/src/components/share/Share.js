@@ -14,6 +14,7 @@ import {
 import "./share.css";
 
 const Share = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
   const [file, setFile] = useState(null);
   const desc = useRef();
@@ -24,8 +25,21 @@ const Share = () => {
       userId: user._id,
       desc: desc.current.value,
     };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      newPost.img = fileName;
+      try {
+        await axios.post("/upload", data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     try {
-      await axios.post("/posts/", newPost);
+      await axios.post("/posts", newPost);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
