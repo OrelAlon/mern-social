@@ -1,3 +1,8 @@
+import { useContext, useRef, useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import axios from "axios";
+
+import noAvatar from "../../assets/noAvatar.png";
 import {
   PermMedia,
   Label,
@@ -9,17 +14,42 @@ import {
 import "./share.css";
 
 const Share = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const { user } = useContext(AuthContext);
+  const [file, setFile] = useState(null);
+  const desc = useRef();
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    const newPost = {
+      userId: user._id,
+      desc: desc.current.value,
+    };
+    try {
+      await axios.post("/posts/", newPost);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className='share'>
       <div className='shareWrapper'>
         <div className='shareTop'>
-          <input className='shareInput' />
+          <img
+            className='shareProfileImg'
+            src={user.profilePicture ? user.profilePicture : noAvatar}
+            alt=''
+          />
+
+          <input
+            className='shareInput'
+            placeholder={"What's in your mind " + user.username + "?"}
+            ref={desc}
+          />
         </div>
         <hr className='shareHr' />
 
-        <form className='shareBottom'>
+        <form className='shareBottom' onSubmit={submitHandler}>
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               <PermMedia htmlColor='tomato' className='shareIcon' />
@@ -29,6 +59,7 @@ const Share = () => {
                 type='file'
                 id='file'
                 accept='.png,.jpeg,.jpg'
+                onChange={(e) => setFile(e.target.files[0])}
               />
             </label>
             <div className='shareOption'>

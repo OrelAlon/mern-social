@@ -41,11 +41,13 @@ function Navbar() {
           </div>
         </div>
         <div>
-          <img
-            src={user.profilePicture ? user.profilePicture : me}
-            alt=''
-            className='topbarImg'
-          />
+          <Link to={`/profile/${user.username}`}>
+            <img
+              src={user.profilePicture ? user.profilePicture : me}
+              alt=''
+              className='topbarImg'
+            />
+          </Link>
         </div>
       </div>
     </div>

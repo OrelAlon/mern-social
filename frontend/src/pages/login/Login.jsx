@@ -20,7 +20,6 @@ const Login = () => {
       dispatch
     );
   };
-  console.log(user);
   return (
     <div className='login'>
       <div className='loginWrapper'>
@@ -52,11 +51,7 @@ const Login = () => {
               type='submit'
               // disabled={isFetching}
             >
-              {isFecthing ? (
-                <CircularProgress color='white' size='25px' />
-              ) : (
-                "Login"
-              )}
+              {isFecthing ? <CircularProgress size='25px' /> : "Login"}
             </button>
             <span className='loginForgot'>Forgot Password?</span>
             <button className='loginRegisterButton'>Forgot</button>

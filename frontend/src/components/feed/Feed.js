@@ -1,4 +1,5 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 import axios from "axios";
 
@@ -8,17 +9,17 @@ import "./feed.css";
 
 const Feed = ({ username }) => {
   const [posts, setPosts] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const fetchPosts = async () => {
       const res = username
         ? await axios.get(`/posts/profile/${username}`)
-        : await axios.get(`posts/timeline/627a42763c59736ae5254d4d`);
+        : await axios.get(`posts/timeline/${user._id}`);
       setPosts(res.data);
-      console.log(res.data);
     };
     fetchPosts();
-  }, [username]);
+  }, [username, user._id]);
 
   return (
     <div className='feed'>
