@@ -13,6 +13,8 @@ import { Users } from "../../dummyData";
 import "./profile.css";
 
 const Profile = () => {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const [user, setUser] = useState({});
   const username = useParams().username;
 
@@ -32,10 +34,18 @@ const Profile = () => {
         <div className='profileRight'>
           <div className='profileRightTop'>
             <div className='profileCover'>
-              <img className='profileCoverImg' src={user.coverPicture} alt='' />
+              <img
+                className='profileCoverImg'
+                src={user.coverPicture ? user.coverPicture : PF + "noCover.png"}
+                alt=''
+              />
               <img
                 className='profileUserImg'
-                src={user.profilePicture}
+                src={
+                  user.profilePicture
+                    ? user.profilePicture
+                    : PF + "noAvatar.png"
+                }
                 alt=''
               />
             </div>
