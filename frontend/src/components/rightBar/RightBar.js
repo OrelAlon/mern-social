@@ -1,11 +1,28 @@
+import { useEffect, useState } from "react";
 import { Users } from "../../dummyData";
 import { Add, Remove } from "@material-ui/icons";
 import Online from "../online/Online";
+import axios from "axios";
 
 import "./rightbar.css";
 
 const Rightbar = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+  const [friends, setFriends] = useState([]);
+  console.log(user);
+
+  useEffect(() => {
+    const getFriends = async () => {
+      try {
+        const friendList = await axios.get("/users/friends/" + user._id);
+        setFriends(friendList.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getFriends();
+    console.log(friends);
+  }, [user]);
 
   const HomeRightbar = () => {
     return (
