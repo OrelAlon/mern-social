@@ -44,7 +44,7 @@ const Rightbar = ({ user }) => {
   const ProfileRightbar = () => {
     return (
       <>
-        <h4 className='rightbarTitle'>User information</h4>
+        <div className='rightbarTitle'>User information</div>
         <div className='rightbarInfo'>
           <div className='rightbarInfoItem'>
             <span className='rightbarInfoKey'>City:</span>

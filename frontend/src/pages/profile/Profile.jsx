@@ -8,8 +8,6 @@ import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 
-import { Users } from "../../dummyData";
-
 import "./profile.css";
 
 const Profile = () => {
@@ -49,7 +47,7 @@ const Profile = () => {
               />
             </div>
             <div className='profileInfo'>
-              <h4 className='profileInfoName'>{user.username}</h4>
+              <h1 className='profileInfoName'>{user.username}</h1>
               <span className='profileInfoDesc'>{user.desc}</span>
             </div>
           </div>
