@@ -1,6 +1,6 @@
-import "./online.css";
+import "./favorite.css";
 
-function Online({ user }) {
+function Favorite({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
@@ -14,4 +14,4 @@ function Online({ user }) {
   );
 }
 
-export default Online;
+export default Favorite;

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Users } from "../../dummyData";
 import { Add, Remove } from "@material-ui/icons";
-import Online from "../online/Online";
+import { AuthContext } from "../../context/AuthContext";
+import Favorite from "../favorite/Favorite";
 import axios from "axios";
 
 import "./rightbar.css";
@@ -9,6 +10,8 @@ import "./rightbar.css";
 const Rightbar = ({ user }) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
+  const { user: currentUser, dispatch } = useContext(AuthContext);
+
   console.log(user);
 
   useEffect(() => {
@@ -27,17 +30,11 @@ const Rightbar = ({ user }) => {
   const HomeRightbar = () => {
     return (
       <>
-        <div className='birthdayContainer'>
-          <img className='birthdayImg' src='assets/gift.png' alt='' />
-          <span className='birthdayText'>
-            <b>some text</b> and <b>3 other friends</b> have a birhday today.
-          </span>
-        </div>
-        <img className='rightbarAd' src='assets/ad.png' alt='' />
-        <h4 className='rightbarTitle'>Online Friends</h4>
+        <div className='rightbarFav'></div>
+        <h4 className='rightbarTitle'>Favorite Restaurants</h4>
         <ul className='rightbarFriendList'>
           {Users.map((u) => (
-            <Online key={u.id} user={u} />
+            <Favorite key={u.id} user={u} />
           ))}
         </ul>{" "}
       </>
@@ -68,8 +65,6 @@ const Rightbar = ({ user }) => {
             </span>
           </div>
         </div>
-        <h4 className='rightbarTitle'>User friends</h4>
-        <div className='rightbarFollowings'></div>
       </>
     );
   };
