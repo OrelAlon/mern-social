@@ -3,13 +3,14 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import me from "../../assets/users/me.png";
+import noAvatar from "../../assets/noAvatar.png";
 
 import "./navbar.css";
 
 function Navbar() {
   const { user } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
+  console.log(user);
   return (
     <div className='topbarContainer'>
       <div className='topbarLeft'>
@@ -29,27 +30,25 @@ function Navbar() {
           <span className='topbarLink'>Timeline</span>
         </div>
         <div className='topbarIcons'>
-          <div className='topbarIconItem'>
-            <Person />
-            <span className='topbarIconBadge'>1</span>
-          </div>
+          <Link to={`/profile/${user.username}`}>
+            <div className='topbarIconItem'>
+              <Person />
+            </div>
+          </Link>
+
           <div className='topbarIconItem'>
             <Chat />
-            <span className='topbarIconBadge'>2</span>
+            {/* <span className='topbarIconBadge'>2</span> */}
           </div>
           <div className='topbarIconItem'>
             <Notifications />
-            <span className='topbarIconBadge'>1</span>
+            {/* <span className='topbarIconBadge'>1</span> */}
           </div>
         </div>
         <div>
           <Link to={`/profile/${user.username}`}>
             <img
-              src={
-                user.profilePicture
-                  ? PF + user.profilePicture
-                  : PF + "person/noAvatar.png"
-              }
+              src={user.profilePicture ? PF + user.profilePicture : noAvatar}
               alt=''
               className='topbarImg'
             />
