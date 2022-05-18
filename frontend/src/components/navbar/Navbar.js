@@ -9,15 +9,15 @@ import "./navbar.css";
 
 function Navbar() {
   const { user } = useContext(AuthContext);
-  const [localUser, setLocalUser] = useState([]);
+  // const [localUser, setLocalUser] = useState([]);
 
-  useEffect(() => {
-    const User =
-      localStorage.getItem("user") !== "null"
-        ? JSON.parse(localStorage.getItem("user"))
-        : localStorage.clear();
-    setLocalUser(User);
-  }, []);
+  // useEffect(() => {
+  //   const User =
+  //     localStorage.getItem("user") !== "null"
+  //       ? JSON.parse(localStorage.getItem("user"))
+  //       : localStorage.clear();
+  //   setLocalUser(User);
+  // }, []);
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
@@ -39,7 +39,7 @@ function Navbar() {
           <span className='topbarLink'>Timeline</span>
         </div>
         <div className='topbarIcons'>
-          <Link to={`/profile/${localUser.username}`}>
+          <Link to={`/profile/${user.username}`}>
             <div className='topbarIconItem'>
               <Person />
             </div>
@@ -55,13 +55,9 @@ function Navbar() {
           </div>
         </div>
         <div>
-          <Link to={`/profile/${localUser.username}`}>
+          <Link to={`/profile/${user.username}`}>
             <img
-              src={
-                localUser.profilePicture
-                  ? PF + localUser.profilePicture
-                  : noAvatar
-              }
+              src={user.profilePicture ? PF + user.profilePicture : noAvatar}
               alt=''
               className='topbarImg'
             />

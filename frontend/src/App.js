@@ -16,19 +16,8 @@ import "./App.css";
 
 function App() {
   const { user } = useContext(AuthContext);
-  if (user !== null) {
-    localStorage.setItem("user", JSON.stringify(user));
-  }
-  console.log(user);
 
-  // useEffect(() => {
-  //   const User =
-  //     localStorage.getItem("user") !== "null"
-  //       ? JSON.parse(localStorage.getItem("user"))
-  //       : localStorage.clear();
-  // }, []);
   return (
-    // 1:25
     <>
       <div className='App'>
         <Router>
