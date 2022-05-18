@@ -9,13 +9,13 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { isFecthing, dispatch } = useContext(AuthContext);
+  const { isFetching, dispatch } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    loginCall(
+    await loginCall(
       {
         email: emailRef.current.value,
         password: passwordRef.current.value,
@@ -23,6 +23,10 @@ const Login = () => {
       dispatch
     );
     navigate("/");
+  };
+
+  const handleRegister = () => {
+    navigate("/register");
   };
 
   return (
@@ -51,16 +55,18 @@ const Login = () => {
               className='loginInput'
               ref={passwordRef}
             />
-            <button
-              className='loginButton'
-              type='submit'
-              // disabled={isFetching}
-            >
-              {isFecthing ? <CircularProgress size='25px' /> : "Login"}
+            <button className='loginButton' type='submit' disabled={isFetching}>
+              {isFetching ? <CircularProgress size='25px' /> : "Login"}
             </button>
-            <span className='loginForgot'>Forgot Password?</span>
-            <button className='loginRegisterButton'>Forgot</button>
+            {/* <span className='loginForgot'>Forgot Password?</span> */}
           </form>
+          <button className='loginRegisterButton' onClick={handleRegister}>
+            {isFetching ? (
+              <CircularProgress color='white' size='20px' />
+            ) : (
+              "Create a New Account"
+            )}
+          </button>
         </div>
       </div>
     </div>

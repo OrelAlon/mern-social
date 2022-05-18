@@ -31,7 +31,6 @@ function App() {
         <Router>
           <Routes>
             <Route path='/'>
-              <Route path='/login' element={<Login />} />
               <Route
                 index
                 element={
@@ -40,6 +39,8 @@ function App() {
                   </ProtectedRoute>
                 }
               />
+              <Route path='/login' element={<Login />} />
+
               <Route path='/register' element={<Register />} />
               <Route path='/profile/:username' element={<Profile />} />
             </Route>
