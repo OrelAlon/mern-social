@@ -1,13 +1,5 @@
 export const Users = [
   {
-    id: 1,
-    profilePicture:
-      "https://media.moddb.com/cache/images/members/5/4550/4549205/thumb_620x2000/duck.jpg",
-    username: "orel alon",
-    coverPicture:
-      "https://raw.githubusercontent.com/safak/youtube/mern-social-app/client/public/assets/person/noCover.png",
-  },
-  {
     id: 2,
     profilePicture:
       "https://image.shutterstock.com/image-photo/surreal-concept-roll-world-dice-260nw-1356798002.jpg",
@@ -30,11 +22,6 @@ export const Users = [
     profilePicture: "https://pbs.twimg.com/media/D8Dp0c5WkAAkvME.jpg",
     username: "tom zilberman",
   },
-  {
-    id: 0,
-    coverPicture:
-      "https://raw.githubusercontent.com/safak/youtube/mern-social-app/client/public/assets/person/noCover.png",
-  },
 ];
 
 export const Posts = [
@@ -48,15 +35,7 @@ export const Posts = [
     like: 32,
     comment: 9,
   },
-  {
-    id: 2,
-    photo:
-      "https://media.contentapi.ea.com/content/dam/eacom/lost-in-random/images/2021/08/lir-usp-in-engine-screen-twotown-royam-no-logo.jpg.adapt.crop16x9.575p.jpg",
-    date: "15 mins ago",
-    userId: 2,
-    like: 2,
-    comment: 1,
-  },
+
   {
     id: 3,
     desc: "Every moment is a fresh beginning.",

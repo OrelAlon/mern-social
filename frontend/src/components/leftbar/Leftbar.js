@@ -10,9 +10,6 @@ import {
   School,
 } from "@material-ui/icons";
 
-import CloseFriend from "../closeFriend/CloseFriend";
-import { Users } from "../../dummyData";
-
 import "./leftbar.css";
 
 const Leftbar = () => {
@@ -58,12 +55,6 @@ const Leftbar = () => {
           </li>
         </ul>
         <button className='leftbarButton'>Show More</button>
-        <hr className='leftbarHr' />
-        <ul className='leftbarFriendList'>
-          {Users.map((u) => (
-            <CloseFriend key={u.id} user={u} />
-          ))}
-        </ul>
       </div>
     </div>
   );
