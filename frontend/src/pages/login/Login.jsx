@@ -8,7 +8,7 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { user, isFecthing, error, dispatch } = useContext(AuthContext);
+  const { user, isFecthing, dispatch } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,6 +19,7 @@ const Login = () => {
       },
       dispatch
     );
+    console.log(user);
   };
   return (
     <div className='login'>

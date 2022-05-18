@@ -16,7 +16,6 @@ import "./App.css";
 
 function App() {
   const { user } = useContext(AuthContext);
-  console.log(user);
   return (
     // 1:25
     <>
