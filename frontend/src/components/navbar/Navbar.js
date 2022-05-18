@@ -1,4 +1,5 @@
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -8,15 +9,11 @@ import "./navbar.css";
 
 function Navbar() {
   const { user } = useContext(AuthContext);
-  // const [localUser, setLocalUser] = useState([]);
+  const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const User =
-  //     localStorage.getItem("user") !== "null"
-  //       ? JSON.parse(localStorage.getItem("user"))
-  //       : localStorage.clear();
-  //   setLocalUser(User);
-  // }, []);
+  const handleLogout = () => {
+    navigate("/login");
+  };
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   return (
@@ -34,8 +31,10 @@ function Navbar() {
       </div>
       <div className='topbarRight'>
         <div className='topbarLinks'>
-          <span className='topbarLink'>Homepage</span>
-          <span className='topbarLink'>Timeline</span>
+          <span className='topbarLink'>Time-Line</span>
+          <span className='topbarLink' onClick={handleLogout}>
+            Log-Out
+          </span>
         </div>
         <div className='topbarIcons'>
           <Link to={`/profile/${user.username}`}>
@@ -48,15 +47,17 @@ function Navbar() {
             <Chat />
             {/* <span className='topbarIconBadge'>2</span> */}
           </div>
+          {/* 
           <div className='topbarIconItem'>
             <Notifications />
-            {/* <span className='topbarIconBadge'>1</span> */}
+            <span className='topbarIconBadge'>1</span>
           </div>
+         */}
         </div>
         <div>
           <Link to={`/profile/${user.username}`}>
             <img
-              src={user.profilePicture ? PF + user.profilePicture : noAvatar}
+              src={user.profilePicture ? user.profilePicture : noAvatar}
               alt=''
               className='topbarImg'
             />

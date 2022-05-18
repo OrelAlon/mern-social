@@ -12,8 +12,6 @@ const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
-  console.log(currentUser);
-
   useEffect(() => {
     const getFriends = async () => {
       try {
@@ -24,7 +22,6 @@ const Rightbar = ({ user }) => {
       }
     };
     getFriends();
-    console.log(friends);
   }, [user]);
 
   const HomeRightbar = () => {
