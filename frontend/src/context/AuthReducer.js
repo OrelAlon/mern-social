@@ -18,6 +18,12 @@ const AuthReducer = (state, action) => {
         isFecthing: false,
         error: action.payload,
       };
+    case "LOGOUT":
+      return {
+        user: null,
+        isFecthing: false,
+        error: null,
+      };
     default:
       return state;
   }
