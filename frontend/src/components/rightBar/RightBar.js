@@ -12,12 +12,12 @@ const Rightbar = ({ user }) => {
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
 
-  console.log(user);
+  console.log(currentUser);
 
   useEffect(() => {
     const getFriends = async () => {
       try {
-        const friendList = await axios.get("/users/friends/" + user._id);
+        const friendList = await axios.get("/users/friends/" + currentUser._id);
         setFriends(friendList.data);
       } catch (error) {
         console.log(error);
