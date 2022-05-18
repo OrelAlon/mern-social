@@ -15,23 +15,34 @@ import Profile from "./pages/profile/Profile";
 import "./App.css";
 
 function App() {
-  const { user } = useContext(AuthContext);
+  const ProtectedRoute = ({ children }) => {
+    const { user } = useContext(AuthContext);
+    console.log(user);
+    if (!user) {
+      return <Navigate to='/login' />;
+    }
+
+    return children;
+  };
 
   return (
     <>
       <div className='App'>
         <Router>
           <Routes>
-            <Route path='/' element={user ? <Home /> : <Login />} />
-            <Route
-              path='/login'
-              element={user ? <Navigate to='/' /> : <Login />}
-            />
-            <Route
-              path='/register'
-              element={user ? <Navigate to='/' /> : <Register />}
-            />
-            <Route path='/profile/:username' element={<Profile />} />
+            <Route path='/'>
+              <Route path='/login' element={<Login />} />
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path='/register' element={<Register />} />
+              <Route path='/profile/:username' element={<Profile />} />
+            </Route>
           </Routes>
         </Router>
       </div>

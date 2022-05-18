@@ -1,4 +1,5 @@
 import { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { CircularProgress } from "@material-ui/core";
@@ -8,7 +9,9 @@ import "./login.css";
 const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { user, isFecthing, dispatch } = useContext(AuthContext);
+  const { isFecthing, dispatch } = useContext(AuthContext);
+
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -19,6 +22,7 @@ const Login = () => {
       },
       dispatch
     );
+    navigate("/");
   };
 
   return (

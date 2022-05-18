@@ -1,8 +1,7 @@
 import { Search, Person, Chat, Notifications } from "@material-ui/icons";
-import { useContext, useState, useEffect } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import me from "../../assets/users/me.png";
 import noAvatar from "../../assets/noAvatar.png";
 
 import "./navbar.css";
