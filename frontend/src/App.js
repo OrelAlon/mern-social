@@ -15,14 +15,14 @@ import Profile from "./pages/profile/Profile";
 import "./App.css";
 
 function App() {
-  const ProtectedRoute = ({ children }) => {
-    const { user } = useContext(AuthContext);
-    if (!user) {
-      return <Navigate to='/login' />;
-    }
+  // const ProtectedRoute = ({ children }) => {
+  //   const { user } = useContext(AuthContext);
+  //   if (!user) {
+  //     return <Navigate to='/login' />;
+  //   }
 
-    return children;
-  };
+  //   return children;
+  // };
 
   return (
     <>
