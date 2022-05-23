@@ -59,7 +59,7 @@ router.put("/:id/like", async (req, res) => {
   }
 });
 
-// get posts
+// get posts of user
 router.get("/timeline/:userId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
@@ -74,8 +74,8 @@ router.get("/timeline/:userId", async (req, res) => {
     res.status(500).json("not workingggg");
   }
 });
-//3 => 43
-// get all posts
+
+// get all posts of user
 router.get("/profile/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
@@ -83,6 +83,16 @@ router.get("/profile/:username", async (req, res) => {
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);
+  }
+});
+
+// get all posts
+router.get("/feed", async (req, res) => {
+  try {
+    const data = await Post.find();
+    res.status(201).json(data);
+  } catch (error) {
+    console.log(error.message);
   }
 });
 

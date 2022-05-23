@@ -9,7 +9,7 @@ import { DeleteForever } from "@material-ui/icons";
 
 import "./post.css";
 
-const Post = ({ post }) => {
+const PublicPost = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -37,15 +37,6 @@ const Post = ({ post }) => {
     setIsLiked(!isLiked);
   };
 
-  const deleteHandler = async () => {
-    try {
-      await axios.delete(`/posts/${post._id}`);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
   return (
     <div className='post'>
       <div className='postWrapper'>
@@ -64,9 +55,6 @@ const Post = ({ post }) => {
             </Link>
             <span className='postUsername'>{user.username}</span>
             <span className='postDate'>{format(post.createdAt)}</span>
-          </div>
-          <div className='postTopRight' onClick={deleteHandler}>
-            <DeleteForever className='deleteIcon' />
           </div>
         </div>
         <div className='postCenter'>
@@ -89,13 +77,11 @@ const Post = ({ post }) => {
             />
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
-          <div className='postBottomRight'>
-            {/* <span className='postCommentText'>{post.comment} comments</span> */}
-          </div>
+          <div className='postBottomRight'></div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Post;
+export default PublicPost;

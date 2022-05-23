@@ -31,7 +31,10 @@ function Navbar() {
       </div>
       <div className='topbarRight'>
         <div className='topbarLinks'>
-          <span className='topbarLink'>Time-Line</span>
+          <Link to='/' className='linkTimeLine'>
+            <span className='topbarLink'>Time-Line</span>
+          </Link>
+
           <span className='topbarLink' onClick={handleLogout}>
             Log-Out
           </span>
