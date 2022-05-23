@@ -76,3 +76,7 @@
   border-bottom: 1px dashed gray;
   font-size: 15px;
 }
+
+.deleteIcon {
+  cursor: pointer;
+}

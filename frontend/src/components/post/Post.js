@@ -39,12 +39,10 @@ const Post = ({ post }) => {
     setIsLiked(!isLiked);
   };
 
-  const deleteHandler = () => {
-    console.log(post.userId);
-    console.log(currentUser._id);
-
+  const deleteHandler = async () => {
     try {
-      axios.delete(`/posts/${post._id}`, { userId: currentUser._id });
+      await axios.delete(`/posts/${post._id}`);
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -70,7 +68,7 @@ const Post = ({ post }) => {
             <span className='postDate'>{format(post.createdAt)}</span>
           </div>
           <div className='postTopRight' onClick={deleteHandler}>
-            <DeleteForever />
+            <DeleteForever className='deleteIcon' />
           </div>
         </div>
         <div className='postCenter'>
