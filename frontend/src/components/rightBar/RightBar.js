@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { Users } from "../../dummyData";
+import { Restaurants } from "../../dummyData";
 import { Add, Remove } from "@material-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
 import Favorite from "../favorite/Favorite";
@@ -30,8 +30,8 @@ const Rightbar = ({ user }) => {
         <div className='rightbarFav'></div>
         <h4 className='rightbarTitle'>Favorite Restaurants</h4>
         <ul className='rightbarFriendList'>
-          {Users.map((u) => (
-            <Favorite key={u.id} user={u} />
+          {Restaurants.map((res) => (
+            <Favorite key={res.id} restaurant={res} />
           ))}
         </ul>{" "}
       </>
