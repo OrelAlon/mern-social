@@ -4,9 +4,11 @@ import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import { format } from "timeago.js";
-import { MoreVert } from "@material-ui/icons";
+// import { MoreVert } from "@material-ui/icons";
+import { DeleteForever } from "@material-ui/icons";
 
 import "./post.css";
+import { Posts } from "../../dummyData";
 
 const Post = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
@@ -30,9 +32,22 @@ const Post = ({ post }) => {
   const likeHandler = () => {
     try {
       axios.put(`/posts/${post._id}/like`, { userId: currentUser._id });
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
+  };
+
+  const deleteHandler = () => {
+    console.log(post.userId);
+    console.log(currentUser._id);
+
+    try {
+      axios.delete(`/posts/${post._id}`, { userId: currentUser._id });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -54,8 +69,8 @@ const Post = ({ post }) => {
             <span className='postUsername'>{user.username}</span>
             <span className='postDate'>{format(post.createdAt)}</span>
           </div>
-          <div className='postTopRight'>
-            <MoreVert />
+          <div className='postTopRight' onClick={deleteHandler}>
+            <DeleteForever />
           </div>
         </div>
         <div className='postCenter'>
