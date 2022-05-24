@@ -8,13 +8,12 @@ router.get("/", async (req, res) => {
   const username = req.query.username;
 
   try {
-    const user = userId
-      ? await User.findById(userId)
-      : await User.findOne({ username: username });
-    const { password, updatedAt, ...other } = user._doc;
+    const user = await User.find({ _id: req.userId }).exec();
+    // : await User.findOne(username);
+    const { password, updatedAt, ...other } = user;
     res.status(200).json(other);
   } catch (err) {
-    res.status(500).json(err);
+    res.status(500).json("error:" + err);
   }
 });
 
@@ -116,8 +115,8 @@ router.put("/:id/unfollow", async (req, res) => {
   }
 });
 
-router.get("/", (req, res) => {
-  res.send("Users Page");
-});
+// router.get("/", (req, res) => {
+//   res.send("Users Page");
+// });
 
 module.exports = router;

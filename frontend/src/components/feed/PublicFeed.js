@@ -25,7 +25,6 @@ const PublicFeed = ({ username }) => {
 
   return (
     <div className='feed'>
-      <h1>Hello from PUBLIC</h1>
       <div className='feedWrapper'>
         {(!username || username === user.username) && <Share />}
         {posts.map((p) => (

@@ -12,6 +12,7 @@ const path = require("path");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const authRoute = require("./routes/auth");
+const restaurantRoute = require("./routes/restaurants");
 
 dotenv.config();
 
@@ -47,6 +48,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
+app.use("/api/restaurant", restaurantRoute);
 
 const PORT = 8000;
 app.listen(PORT, () => {
