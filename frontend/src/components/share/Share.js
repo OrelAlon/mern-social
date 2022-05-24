@@ -1,28 +1,25 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
 import noAvatar from "../../assets/noAvatar.png";
-import {
-  PermMedia,
-  Label,
-  Room,
-  EmojiEmotions,
-  Cancel,
-} from "@material-ui/icons";
+import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
 
 import "./share.css";
 
 const Share = () => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const { user } = useContext(AuthContext);
   const [file, setFile] = useState(null);
+  const [restaurantName, setRestaurantName] = useState(null);
+  const [restaurants, setRestaurants] = useState([]);
+
   const desc = useRef();
 
   const submitHandler = async (e) => {
     e.preventDefault();
     const newPost = {
       userId: user._id,
+      // restaurantname: restaurantName.current.value,
       desc: desc.current.value,
     };
     if (file) {
@@ -44,6 +41,15 @@ const Share = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      const res = await axios.get(`/restaurant/restaurants`);
+      setRestaurants(res.data);
+    };
+    fetchRestaurants();
+    console.log(restaurants);
+  }, [file]);
 
   return (
     <div className='share'>
@@ -79,6 +85,12 @@ const Share = () => {
             <div className='shareOption'>
               <Label htmlColor='blue' className='shareIcon' />
               <span className='shareOptionText'>Tag</span>
+              <input
+                style={{ display: "none" }}
+                type='text'
+                id='text'
+                onChange={(e) => setRestaurantName(e.target.value)}
+              />
             </div>
             <div className='shareOption'>
               <Room htmlColor='green' className='shareIcon' />

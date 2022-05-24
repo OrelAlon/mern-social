@@ -33,4 +33,14 @@ router.get("/", async (req, res) => {
   }
 });
 
+// get all restaurants
+router.get("/restaurants", async (req, res) => {
+  try {
+    const data = await Restaurant.find();
+    res.status(201).json(data);
+  } catch (error) {
+    console.log(error.message);
+  }
+});
+
 module.exports = router;
