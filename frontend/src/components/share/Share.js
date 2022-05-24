@@ -14,6 +14,7 @@ const Share = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   const desc = useRef();
+  console.log(restaurantName);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -48,7 +49,6 @@ const Share = () => {
       setRestaurants(res.data);
     };
     fetchRestaurants();
-    console.log(restaurants);
   }, [file]);
 
   return (
@@ -63,7 +63,7 @@ const Share = () => {
 
           <input
             className='shareInput'
-            placeholder={"What's in your mind " + user.username + "?"}
+            placeholder={"Where are you now ?" + user.username + "?"}
             ref={desc}
           />
         </div>
@@ -73,7 +73,7 @@ const Share = () => {
           <div className='shareOptions'>
             <label htmlFor='file' className='shareOption'>
               <PermMedia htmlColor='tomato' className='shareIcon' />
-              <span className='shareOptionText'>Photo or Video</span>
+              <span className='shareOptionText'>Photo</span>
               <input
                 style={{ display: "none" }}
                 type='file'
@@ -84,13 +84,26 @@ const Share = () => {
             </label>
             <div className='shareOption'>
               <Label htmlColor='blue' className='shareIcon' />
-              <span className='shareOptionText'>Tag</span>
-              <input
-                style={{ display: "none" }}
-                type='text'
-                id='text'
+              <span className='shareOptionText'>Tag- </span>
+              <label htmlFor='restaurant'> a place:</label>
+              <select
+                name='restaurant'
+                id='restaurant'
                 onChange={(e) => setRestaurantName(e.target.value)}
-              />
+              >
+                <option disabled selected value>
+                  {" "}
+                  -- Restaurant --{" "}
+                </option>
+
+                {restaurants.map((res) => {
+                  return (
+                    <option key={res._id} value={res.restaurantname}>
+                      {res.restaurantname}
+                    </option>
+                  );
+                })}
+              </select>
             </div>
             <div className='shareOption'>
               <Room htmlColor='green' className='shareIcon' />
