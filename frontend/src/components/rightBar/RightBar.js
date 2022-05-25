@@ -8,20 +8,28 @@ import axios from "axios";
 import "./rightbar.css";
 
 const Rightbar = ({ user }) => {
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-  const [friends, setFriends] = useState([]);
-  const { user: currentUser, dispatch } = useContext(AuthContext);
+  // const [friends, setFriends] = useState([]);
+  const [restaurantsList, setRestaurantsList] = useState([]);
+
+  // const { user: currentUser, dispatch } = useContext(AuthContext);
 
   useEffect(() => {
-    const getFriends = async () => {
-      try {
-        const friendList = await axios.get("/users/friends/" + currentUser._id);
-        setFriends(friendList.data);
-      } catch (error) {
-        console.log(error);
-      }
+    // const getFriends = async () => {
+    //   try {
+    //     const friendList = await axios.get("/users/friends/" + currentUser._id);
+    //     setFriends(friendList.data);
+    //   } catch (error) {
+    //     console.log(error);
+    //   }
+    // };
+    // getFriends();
+    const fetchRestaurants = async () => {
+      const res = await axios.get(`/restaurant/restaurants`);
+      setRestaurantsList(res.data);
+      console.log(restaurantsList);
     };
-    getFriends();
+
+    fetchRestaurants();
   }, [user]);
 
   const HomeRightbar = () => {
@@ -30,8 +38,8 @@ const Rightbar = ({ user }) => {
         <div className='rightbarFav'></div>
         <h4 className='rightbarTitle'>Favorite Restaurants</h4>
         <ul className='rightbarFriendList'>
-          {Restaurants.map((res) => (
-            <Favorite key={res.id} restaurant={res} />
+          {restaurantsList.map((res) => (
+            <Favorite key={res._id} restaurant={res} />
           ))}
         </ul>{" "}
       </>

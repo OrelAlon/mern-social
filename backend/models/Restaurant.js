@@ -9,11 +9,8 @@ const RestaurantSchema = new mongoose.Schema(
       max: 20,
       unique: true,
     },
-    userId: {
-      type: String,
-      required: true,
-    },
-    posttId: {
+
+    postId: {
       type: String,
     },
 

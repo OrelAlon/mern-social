@@ -23,11 +23,8 @@ const Share = () => {
       restaurantId: restaurantName,
       desc: desc.current.value,
     };
-    console.log(newPost);
 
     if (file) {
-      console.log(restaurantName);
-
       const data = new FormData();
       const fileName = Date.now() + file.name;
       data.append("name", fileName);
@@ -51,7 +48,6 @@ const Share = () => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurant/restaurants`);
       setRestaurants(res.data);
-      console.log(restaurants);
     };
     fetchRestaurants();
   }, [file]);
@@ -94,9 +90,10 @@ const Share = () => {
               <select
                 name='restaurant'
                 id='restaurant'
+                defaultValue={"DEFAULT"}
                 onChange={(e) => setRestaurantName(e.target.value)}
               >
-                <option disabled selected value>
+                <option value='DEFAULT' disabled>
                   {" "}
                   -- Restaurant --{" "}
                 </option>
