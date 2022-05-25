@@ -36,8 +36,13 @@
 
 .postDate {
   font-size: 12px;
+  line-break: auto;
 }
-
+.postInfo {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
 .postCenter {
   margin: 20px 0;
 }
@@ -79,4 +84,11 @@
 
 .deleteIcon {
   cursor: pointer;
+}
+.bold {
+  font-weight: bold;
+}
+.postText {
+  display: flex;
+  align-items: center;
 }

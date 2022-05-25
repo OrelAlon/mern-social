@@ -13,8 +13,10 @@ const UserPost = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
+  const [restaurant, setRestaurant] = useState({});
   const { user: currentUser } = useContext(AuthContext);
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
@@ -22,10 +24,17 @@ const UserPost = ({ post }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users/?userId=${post.userId}`);
-      setUser(res.data);
+      setUser(res.data._doc);
     };
+    const fetchRestaurant = async () => {
+      const res = await axios.get(
+        `/restaurants/?restaurantId=${post.restaurantId}`
+      );
+      setRestaurant(res.data);
+    };
+    fetchRestaurant();
     fetchUser();
-  }, [post.userId]);
+  }, [post]);
 
   const likeHandler = () => {
     try {
@@ -51,18 +60,19 @@ const UserPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            <Link to={`/profile/${user.username}`}>
-              <img
-                className='postProfileImg'
-                src={
-                  user.profilePicture
-                    ? user.profilePicture
-                    : PF + "noAvatar.png"
-                }
-                alt=''
-              />
-            </Link>
-            <span className='postUsername'>{user.username}</span>
+            {/* <Link to={`/profile/${user.username}`}> */}
+            <img
+              className='postProfileImg'
+              src={
+                user.profilePicture ? user.profilePicture : PF + "noAvatar.png"
+              }
+              alt=''
+            />
+            {/* </Link> */}
+            <span className='postUsername'>
+              <span className='bold'> {user.username} </span>in{" "}
+              <span className='bold'>{restaurant.restaurantname}</span>
+            </span>
             <span className='postDate'>{format(post.createdAt)}</span>
           </div>
           <div className='postTopRight' onClick={deleteHandler}>

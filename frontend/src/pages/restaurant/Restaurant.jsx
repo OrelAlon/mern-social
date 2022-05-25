@@ -23,32 +23,26 @@ const Restaurant = () => {
     };
     fetchRestaurant();
   }, []);
-  console.log(restaurant);
+  //   console.log(restaurant);
   return (
     <>
       <Navbar />
       <div className='restaurant'>
         <Leftbar />
         <div className='restaurantRight'>
-          <div className='restaurantRightTop'>
-            {/* <div className='restaurantCover'> */}
-            {/* <img
-                  className='restaurantCoverImg'
-                  src={restaurant.coverPicture }
-                  alt=''
-                /> */}
+          <div className='restaurantInfo'>
             <img
               className='restaurantImg'
               src={restaurant.profilePicture}
               alt=''
             />
-            {/* </div> */}
-            <div className='restaurantInfo'>
-              <h1 className='restaurantInfoName'>
-                {restaurant.restaurantname}
-              </h1>
-              <span className='restaurantInfoDesc'>{restaurant.desc}</span>
-            </div>
+            <h1 className='restaurantInfoName'>{restaurant.restaurantname}</h1>
+            <span className='restaurantInfoDesc'>{restaurant.desc}</span>
+            <img
+              className='restaurantImg'
+              src={restaurant.profilePicture}
+              alt=''
+            />
           </div>
           <div className='restaurantRightBottom'>
             <RestaurantFeed restaurant={restaurant} />
