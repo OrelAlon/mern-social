@@ -1,4 +1,6 @@
-import { useContext, useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import axios from "axios";
 
 import "./favorite.css";
@@ -12,7 +14,6 @@ function Favorite({ restaurant }) {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurant/restaurants`);
       setRestaurantsList(res.data);
-      console.log(restaurantsList);
     };
 
     fetchRestaurants();

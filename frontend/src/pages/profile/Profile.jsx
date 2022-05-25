@@ -7,7 +7,6 @@ import Navbar from "../../components/navbar/Navbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
-import noAvatar from "../../assets/noAvatar.png";
 
 import "./profile.css";
 
@@ -18,7 +17,7 @@ const Profile = () => {
   const username = useParams().username;
   useEffect(() => {
     const fetchUser = async () => {
-      const res = await axios.get(`/users?username=${username}`);
+      const res = await axios.get(`/users/?username=${username}`);
       setUser(res.data);
     };
     fetchUser();

@@ -48,7 +48,7 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
-app.use("/api/restaurant", restaurantRoute);
+app.use("/api/restaurants", restaurantRoute);
 
 const PORT = 8000;
 app.listen(PORT, () => {

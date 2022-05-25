@@ -11,6 +11,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Profile from "./pages/profile/Profile";
+import Restaurant from "./pages/restaurant/Restaurant";
 
 import "./App.css";
 
@@ -42,6 +43,10 @@ function App() {
 
               <Route path='/register' element={<Register />} />
               <Route path='/profile/:username' element={<Profile />} />
+              <Route
+                path='/restaurant/:restaurantname'
+                element={<Restaurant />}
+              />
             </Route>
           </Routes>
         </Router>

@@ -26,7 +26,6 @@ const Rightbar = ({ user }) => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurant/restaurants`);
       setRestaurantsList(res.data);
-      console.log(restaurantsList);
     };
 
     fetchRestaurants();
