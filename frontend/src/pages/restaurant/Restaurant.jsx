@@ -9,15 +9,18 @@ import Feed from "../../components/feed/Feed";
 import Rightbar from "../../components/rightbar/Rightbar";
 
 const Restaurant = () => {
-  // const [restaurant, setRestaurant] = useState({});
-  // const restaurantname = useParams().restaurantname;
-  // useEffect(() => {
-  //   const fetchUser = async () => {
-  //     const res = await axios.get(`/users?username=${restaurantname}`);
-  //     setUser(res.data);
-  //   };
-  //   fetchUser();
-  // }, []);
+  const [restaurant, setRestaurant] = useState({});
+  const restaurantname = useParams().restaurantname;
+
+  useEffect(() => {
+    const fetchRestaurant = async () => {
+      const res = await axios.get(
+        `/restaurants/?restaurantname=${restaurantname}`
+      );
+      setRestaurant(res.data);
+    };
+    fetchRestaurant();
+  }, []);
 
   return (
     <>
@@ -25,6 +28,7 @@ const Restaurant = () => {
       <div className='profile'>
         <Leftbar />
         <div className='profileRight'>
+          <h1>restaurantnamerestaurantnamerestaurantname</h1>
           {/* <div className='profileRightTop'>
               <div className='profileCover'>
                 <img

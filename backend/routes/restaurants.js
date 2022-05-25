@@ -19,13 +19,13 @@ router.post("/", async (req, res) => {
 
 // get restaurant
 router.get("/", async (req, res) => {
-  const restaurantId = req.body.restaurantId;
+  const restaurantId = req.query.restaurantId;
   const restaurantname = req.query.restaurantname;
 
   try {
     const restaurant = restaurantId
       ? await Restaurant.findById(restaurantId)
-      : await Restaurant.findOne(restaurantname);
+      : await Restaurant.findOne({ restaurantname: restaurantname });
     res.status(200).json(restaurant);
   } catch (err) {
     res.status(500).json("error:" + err);

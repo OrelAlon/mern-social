@@ -8,8 +8,9 @@ router.get("/", async (req, res) => {
   const username = req.query.username;
 
   try {
-    const user = await User.find({ _id: req.userId }).exec();
-    // : await User.findOne(username);
+    const user = userId
+      ? await User.findById(userId).exec()
+      : await User.findOne({ username: username });
     const { password, updatedAt, ...other } = user;
     res.status(200).json(other);
   } catch (err) {

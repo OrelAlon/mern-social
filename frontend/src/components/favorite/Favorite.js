@@ -12,7 +12,7 @@ function Favorite({ restaurant }) {
 
   useEffect(() => {
     const fetchRestaurants = async () => {
-      const res = await axios.get(`/restaurant/restaurants`);
+      const res = await axios.get(`/restaurants/restaurants`);
       setRestaurantsList(res.data);
     };
 
@@ -22,11 +22,13 @@ function Favorite({ restaurant }) {
   return (
     <li className='rightbarRestaurants'>
       <div className='rightbarProfileImgContainer'>
-        <img
-          className='rightbarProfileImg'
-          src={restaurant.profilePicture}
-          alt=''
-        />
+        <Link to={`/restaurant/${restaurant.restaurantname}`}>
+          <img
+            className='rightbarProfileImg'
+            src={restaurant.profilePicture}
+            alt=''
+          />
+        </Link>
       </div>
       <span className='rightbarRestaurant'> {restaurant.restaurantname}</span>
     </li>
