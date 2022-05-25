@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
 const User = require("../models/User");
+const Restaurant = require("../models/Restaurant");
 
 // create post
 router.post("/", async (req, res) => {
@@ -60,7 +61,7 @@ router.put("/:id/like", async (req, res) => {
   }
 });
 
-// get posts of user
+// get posts of username
 router.get("/timeline/:userId", async (req, res) => {
   try {
     const currentUser = await User.findById(req.params.userId);
@@ -81,6 +82,19 @@ router.get("/profile/:username", async (req, res) => {
   try {
     const user = await User.findOne({ username: req.params.username });
     const posts = await Post.find({ userId: user._id });
+    res.status(200).json(posts);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+// get all posts of restaurant
+router.get("/restaurants/:restaurantname", async (req, res) => {
+  try {
+    const restaurant = await Restaurant.findOne({
+      restaurantname: req.params.restaurantname,
+    });
+    const posts = await Post.find({ restaurantId: restaurant._id });
     res.status(200).json(posts);
   } catch (err) {
     res.status(500).json(err);

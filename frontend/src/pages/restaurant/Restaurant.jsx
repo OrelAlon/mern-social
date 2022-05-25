@@ -5,8 +5,10 @@ import axios from "axios";
 
 import Navbar from "../../components/navbar/Navbar";
 import Leftbar from "../../components/leftbar/Leftbar";
-import Feed from "../../components/feed/Feed";
+import RestaurantFeed from "../../components/feed/RestaurantFeed";
 import Rightbar from "../../components/rightbar/Rightbar";
+
+import "./restaurant.css";
 
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
@@ -21,40 +23,37 @@ const Restaurant = () => {
     };
     fetchRestaurant();
   }, []);
-
+  console.log(restaurant);
   return (
     <>
       <Navbar />
-      <div className='profile'>
+      <div className='restaurant'>
         <Leftbar />
-        <div className='profileRight'>
-          <h1>restaurantnamerestaurantnamerestaurantname</h1>
-          {/* <div className='profileRightTop'>
-              <div className='profileCover'>
-                <img
-                  className='profileCoverImg'
-                  src={user.coverPicture ? user.coverPicture : PF + "noCover.png"}
+        <div className='restaurantRight'>
+          <div className='restaurantRightTop'>
+            {/* <div className='restaurantCover'> */}
+            {/* <img
+                  className='restaurantCoverImg'
+                  src={restaurant.coverPicture }
                   alt=''
-                />
-                <img
-                  className='profileUserImg'
-                  src={
-                    user.profilePicture
-                      ? user.profilePicture
-                      : PF + "noAvatar.png"
-                  }
-                  alt=''
-                />
-              </div>
-              <div className='profileInfo'>
-                <h1 className='profileInfoName'>{user.username}</h1>
-                <span className='profileInfoDesc'>{user.desc}</span>
-              </div>
+                /> */}
+            <img
+              className='restaurantImg'
+              src={restaurant.profilePicture}
+              alt=''
+            />
+            {/* </div> */}
+            <div className='restaurantInfo'>
+              <h1 className='restaurantInfoName'>
+                {restaurant.restaurantname}
+              </h1>
+              <span className='restaurantInfoDesc'>{restaurant.desc}</span>
             </div>
-            <div className='profileRightBottom'>
-              <Feed username={username} />
-              <Rightbar user={user} />
-            </div> */}
+          </div>
+          <div className='restaurantRightBottom'>
+            <RestaurantFeed restaurant={restaurant} />
+            <Rightbar />
+          </div>
         </div>
       </div>
     </>

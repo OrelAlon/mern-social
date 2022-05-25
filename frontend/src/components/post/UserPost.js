@@ -9,7 +9,7 @@ import { DeleteForever } from "@material-ui/icons";
 
 import "./post.css";
 
-const Post = ({ post }) => {
+const UserPost = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
@@ -98,4 +98,4 @@ const Post = ({ post }) => {
   );
 };
 
-export default Post;
+export default UserPost;
