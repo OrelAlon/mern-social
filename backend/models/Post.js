@@ -8,7 +8,7 @@ const PostSchema = new mongoose.Schema(
     },
     restaurantId: {
       type: String,
-      // required: true,
+      required: true,
     },
     desc: {
       type: String,

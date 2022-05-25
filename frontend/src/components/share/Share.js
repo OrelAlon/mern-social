@@ -14,16 +14,20 @@ const Share = () => {
   const [restaurants, setRestaurants] = useState([]);
 
   const desc = useRef();
-  console.log(restaurantName);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+
     const newPost = {
       userId: user._id,
-      // restaurantname: restaurantName.current.value,
+      restaurantId: restaurantName,
       desc: desc.current.value,
     };
+    console.log(newPost);
+
     if (file) {
+      console.log(restaurantName);
+
       const data = new FormData();
       const fileName = Date.now() + file.name;
       data.append("name", fileName);
@@ -47,6 +51,7 @@ const Share = () => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurant/restaurants`);
       setRestaurants(res.data);
+      console.log(restaurants);
     };
     fetchRestaurants();
   }, [file]);
@@ -63,7 +68,7 @@ const Share = () => {
 
           <input
             className='shareInput'
-            placeholder={"Where are you now ?" + user.username + "?"}
+            placeholder={"What bla bla " + user.username + "?"}
             ref={desc}
           />
         </div>
@@ -98,7 +103,7 @@ const Share = () => {
 
                 {restaurants.map((res) => {
                   return (
-                    <option key={res._id} value={res.restaurantname}>
+                    <option key={res._id} value={res._id}>
                       {res.restaurantname}
                     </option>
                   );

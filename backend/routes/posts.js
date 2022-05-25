@@ -6,7 +6,7 @@ const User = require("../models/User");
 router.post("/", async (req, res) => {
   const newPost = new Post({
     userId: req.body.userId,
-    //// restaurantId: req.body.restaurantId,
+    restaurantId: req.body.restaurantId,
     desc: req.body.desc,
     img: req.body.img,
   });
