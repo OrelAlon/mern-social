@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
 
@@ -23,12 +22,7 @@ const RestaurantPost = ({ post }) => {
       const res = await axios.get(`/users/?userId=${post.userId}`);
       setUser(res.data._doc);
     };
-    // const fetchRestaurant = async () => {
-    //   const res = await axios.get(
-    //     `/restaurants/?restaurantId=${post.restaurantId}`
-    //   );
-    //   setRestaurant(res.data);
-    // };
+
     fetchUser();
   }, [post]);
 
