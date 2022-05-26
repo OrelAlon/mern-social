@@ -55,7 +55,6 @@ const RestaurantPost = ({ post }) => {
           </div>
         </div>
         <div className='postCenter'>
-          <span className='postText'>{post?.desc}</span>
           <img className='postImg' src={PF + post.img} alt='' />
         </div>
         <div className='postBottom'>
@@ -74,7 +73,10 @@ const RestaurantPost = ({ post }) => {
             />
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
-          <div className='postBottomRight'></div>
+          <div className='postBottomRight'>
+            {" "}
+            <span className='postText'>{post?.desc}</span>
+          </div>
         </div>
       </div>
     </div>

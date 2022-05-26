@@ -23,7 +23,7 @@ const Restaurant = () => {
     };
     fetchRestaurant();
   }, []);
-  //   console.log(restaurant);
+  console.log(restaurant);
   return (
     <>
       <Navbar />

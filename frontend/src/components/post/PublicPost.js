@@ -67,7 +67,6 @@ const PublicPost = ({ post }) => {
           <h6 className='postDate'>{format(post.createdAt)}</h6>
         </div>
         <div className='postCenter'>
-          <h3 className='postText'>{post?.desc}</h3>
           <img className='postImg' src={PF + post.img} alt='' />
         </div>
         <div className='postBottom'>
@@ -86,7 +85,10 @@ const PublicPost = ({ post }) => {
             />
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
-          <div className='postBottomRight'></div>
+          <div className='postBottomRight'>
+            {" "}
+            <h3 className='postText'>{post?.desc}</h3>
+          </div>
         </div>
       </div>
     </div>

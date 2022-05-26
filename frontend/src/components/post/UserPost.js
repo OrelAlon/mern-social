@@ -79,7 +79,6 @@ const UserPost = ({ post }) => {
           </div>
         </div>
         <div className='postCenter'>
-          <span className='postText'>{post?.desc}</span>
           <img className='postImg' src={PF + post.img} alt='' />
         </div>
         <div className='postBottom'>
@@ -99,7 +98,7 @@ const UserPost = ({ post }) => {
             <span className='postLikeCounter'>{like} people like it</span>
           </div>
           <div className='postBottomRight'>
-            {/* <span className='postCommentText'>{post.comment} comments</span> */}
+            <span className='postText'>{post?.desc}</span>
           </div>
         </div>
       </div>
