@@ -91,6 +91,7 @@ const Share = () => {
                 name='restaurant'
                 id='restaurant'
                 defaultValue={"DEFAULT"}
+                required
                 onChange={(e) => setRestaurantName(e.target.value)}
               >
                 <option value='DEFAULT' disabled>

@@ -13,6 +13,7 @@ import "./restaurant.css";
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
   const restaurantname = useParams().restaurantname;
+  console.log(restaurant);
 
   useEffect(() => {
     const fetchRestaurant = async () => {
@@ -22,8 +23,8 @@ const Restaurant = () => {
       setRestaurant(res.data);
     };
     fetchRestaurant();
-  }, []);
-  console.log(restaurant);
+  }, [restaurantname]);
+
   return (
     <>
       <Navbar />
