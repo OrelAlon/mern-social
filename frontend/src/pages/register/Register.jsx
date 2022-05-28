@@ -91,17 +91,21 @@ const Register = () => {
               className='loginInput'
               type='password'
             />
-            <label htmlFor='file' className='shareOption'>
-              <PermMedia htmlColor='tomato' className='shareIcon' />
-              <span className='shareOptionText'>Add Profile Photo</span>
-              <input
-                style={{ display: "none" }}
-                type='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </label>
+            <div className='imgLog'>
+              <label htmlFor='file' className='loginImg'>
+                <PermMedia htmlColor='tomato' className='shareIcon' />
+                <span className='shareOptionText'>Add Profile Photo</span>
+                <input
+                  required
+                  // style={{ display: "none" }}
+                  type='file'
+                  name='file'
+                  id='file'
+                  accept='.png,.jpeg,.jpg,.jfif'
+                  onChange={(e) => setFile(e.target.files[0])}
+                />
+              </label>
+            </div>
             <button className='loginButton' type='submit'>
               Sign Up
             </button>

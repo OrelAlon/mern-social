@@ -12,6 +12,8 @@ const PublicPost = ({ post }) => {
   const [user, setUser] = useState({});
   const [restaurant, setRestaurant] = useState({});
 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const { user: currentUser } = useContext(AuthContext);
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));

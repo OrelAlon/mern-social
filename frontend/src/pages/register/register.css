@@ -83,3 +83,21 @@
   font-weight: 500;
   cursor: pointer;
 }
+.loginImg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.imgLog {
+  height: 50px;
+
+  margin: 20px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+  margin: 6px;
+}
