@@ -27,6 +27,7 @@ const PublicPost = ({ post }) => {
       const res = await axios.get(
         `/restaurants/?restaurantId=${post.restaurantId}`
       );
+
       setRestaurant(res.data);
     };
     fetchRestaurant();
