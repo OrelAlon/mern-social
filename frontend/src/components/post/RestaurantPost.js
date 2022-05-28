@@ -45,7 +45,9 @@ const RestaurantPost = ({ post }) => {
             <img
               className='postProfileImg'
               src={
-                user.profilePicture ? user.profilePicture : PF + "noAvatar.png"
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "noAvatar.png"
               }
               alt=''
             />

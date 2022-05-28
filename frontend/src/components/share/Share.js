@@ -66,7 +66,7 @@ const Share = () => {
 
           <input
             className='shareInput'
-            placeholder={"What bla bla " + user.username + "?"}
+            placeholder={"What do you think " + user.username + "?"}
             ref={desc}
           />
         </div>

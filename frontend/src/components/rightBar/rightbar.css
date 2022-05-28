@@ -100,3 +100,32 @@
 .rightbarFollowButton:focus {
   outline: none;
 }
+
+.shareOption {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.shareIcon {
+  font-size: 18px;
+  margin-right: 3px;
+}
+
+.shareOptionText {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.saveButton {
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: rgb(232, 102, 9);
+  font-weight: 500;
+  margin: 20px;
+  cursor: pointer;
+  color: white;
+}
+/* #5D7180 */

@@ -1,18 +1,16 @@
 import { useEffect, useState, useContext } from "react";
-import { Restaurants } from "../../dummyData";
-import { Add, Remove } from "@material-ui/icons";
-import { AuthContext } from "../../context/AuthContext";
 import Favorite from "../favorite/Favorite";
+import { PermMedia } from "@material-ui/icons";
+
 import axios from "axios";
 
 import "./rightbar.css";
 
 const Rightbar = ({ user }) => {
-  // const [friends, setFriends] = useState([]);
   const [restaurantsList, setRestaurantsList] = useState([]);
+  const [file, setFile] = useState(null);
 
-  // const { user: currentUser, dispatch } = useContext(AuthContext);
-
+  console.log(user._doc);
   useEffect(() => {
     // const getFriends = async () => {
     //   try {
@@ -30,6 +28,33 @@ const Rightbar = ({ user }) => {
 
     fetchRestaurants();
   }, [user]);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const update = {
+      userId: user._doc._id,
+    };
+
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      update.profilePicture = fileName;
+
+      try {
+        await axios.post("/upload", data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    try {
+      await axios.put("/users/" + user._doc._id, update);
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const HomeRightbar = () => {
     return (
@@ -52,11 +77,11 @@ const Rightbar = ({ user }) => {
         <div className='rightbarInfo'>
           <div className='rightbarInfoItem'>
             <span className='rightbarInfoKey'>City:</span>
-            <span className='rightbarInfoValue'>{user.city}</span>
+            <span className='rightbarInfoValue'>{user.city || "Haifa"}</span>
           </div>
           <div className='rightbarInfoItem'>
-            <span className='rightbarInfoKey'>From:</span>
-            <span className='rightbarInfoValue'>{user.from}</span>
+            {/* <span className='rightbarInfoKey'>From:</span>
+            <span className='rightbarInfoValue'>{user.from}</span> */}
           </div>
           <div className='rightbarInfoItem'>
             <span className='rightbarInfoKey'>Relationship:</span>
@@ -68,6 +93,20 @@ const Rightbar = ({ user }) => {
                 : "Complicated"}
             </span>
           </div>
+          <label htmlFor='file' className='shareOption'>
+            <PermMedia htmlColor='tomato' className='shareIcon' />
+            <span className='shareOptionText'>Change Picture</span>
+            <input
+              style={{ display: "none" }}
+              type='file'
+              id='file'
+              accept='.png,.jpeg,.jpg,.jfif'
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+          </label>{" "}
+          <button className='saveButton' type='submit' onClick={handleClick}>
+            Save
+          </button>
         </div>
       </>
     );
