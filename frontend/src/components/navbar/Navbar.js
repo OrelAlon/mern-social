@@ -10,12 +10,13 @@ import "./navbar.css";
 function Navbar() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-
+  console.log(user);
   const handleLogout = () => {
     navigate("/login");
   };
 
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className='topbarContainer'>
       <div className='topbarLeft'>
@@ -60,7 +61,7 @@ function Navbar() {
         <div>
           <Link to={`/profile/${user.username}`}>
             <img
-              src={user.profilePicture ? user.profilePicture : noAvatar}
+              src={user.profilePicture ? PF + user.profilePicture : noAvatar}
               alt=''
               className='topbarImg'
             />

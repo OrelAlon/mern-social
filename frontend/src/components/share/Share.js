@@ -13,6 +13,8 @@ const Share = () => {
   const [restaurantName, setRestaurantName] = useState(null);
   const [restaurants, setRestaurants] = useState([]);
 
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   const desc = useRef();
 
   const submitHandler = async (e) => {
@@ -58,7 +60,7 @@ const Share = () => {
         <div className='shareTop'>
           <img
             className='shareProfileImg'
-            src={user.profilePicture ? user.profilePicture : noAvatar}
+            src={user.profilePicture ? PF + user.profilePicture : noAvatar}
             alt=''
           />
 

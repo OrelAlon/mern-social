@@ -1,6 +1,7 @@
 import axios from "axios";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { PermMedia } from "@material-ui/icons";
 
 import "./register.css";
 
@@ -10,10 +11,13 @@ const Register = () => {
   const passwordRef = useRef();
   const passwordAgainRef = useRef();
 
+  const [file, setFile] = useState(null);
+
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
     e.preventDefault();
+
     if (passwordRef.current.value !== passwordAgainRef.current.value) {
       passwordAgainRef.current.setCustomValidity("Password don't match.");
     } else {
@@ -22,6 +26,20 @@ const Register = () => {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       };
+
+      if (file) {
+        const data = new FormData();
+        const fileName = Date.now() + file.name;
+        data.append("name", fileName);
+        data.append("file", file);
+        user.profilePicture = fileName;
+        try {
+          await axios.post("/upload", data);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+
       try {
         await axios.post("/auth/register", user);
         navigate("/login");
@@ -73,6 +91,17 @@ const Register = () => {
               className='loginInput'
               type='password'
             />
+            <label htmlFor='file' className='shareOption'>
+              <PermMedia htmlColor='tomato' className='shareIcon' />
+              <span className='shareOptionText'>Add Profile Photo</span>
+              <input
+                style={{ display: "none" }}
+                type='file'
+                id='file'
+                accept='.png,.jpeg,.jpg,.jfif'
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </label>
             <button className='loginButton' type='submit'>
               Sign Up
             </button>

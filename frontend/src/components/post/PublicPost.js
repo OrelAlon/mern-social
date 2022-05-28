@@ -13,7 +13,6 @@ const PublicPost = ({ post }) => {
   const [restaurant, setRestaurant] = useState({});
 
   const { user: currentUser } = useContext(AuthContext);
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
@@ -54,7 +53,9 @@ const PublicPost = ({ post }) => {
             <img
               className='postProfileImg'
               src={
-                user.profilePicture ? user.profilePicture : PF + "noAvatar.png"
+                user.profilePicture
+                  ? PF + user.profilePicture
+                  : PF + "noAvatar.png"
               }
               alt=''
             />
