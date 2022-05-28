@@ -90,6 +90,7 @@ const Share = () => {
               <span className='shareOptionText'>Tag- </span>
               <label htmlFor='restaurant'> a place:</label>
               <select
+                className='select'
                 name='restaurant'
                 id='restaurant'
                 defaultValue={"DEFAULT"}
@@ -100,7 +101,6 @@ const Share = () => {
                   {" "}
                   -- Restaurant --{" "}
                 </option>
-
                 {restaurants.map((res) => {
                   return (
                     <option key={res._id} value={res._id}>
@@ -110,14 +110,14 @@ const Share = () => {
                 })}
               </select>
             </div>
-            <div className='shareOption'>
+            {/* <div className='shareOption'>
               <Room htmlColor='green' className='shareIcon' />
               <span className='shareOptionText'>Location</span>
             </div>
             <div className='shareOption'>
               <EmojiEmotions htmlColor='goldenrod' className='shareIcon' />
               <span className='shareOptionText'>Feelings</span>
-            </div>
+            </div> */}
           </div>
           <button className='shareButton' type='submit'>
             Share

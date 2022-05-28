@@ -92,12 +92,13 @@ const Register = () => {
               type='password'
             />
             <div className='imgLog'>
+              {/* http://jsfiddle.net/4cwpLvae/ */}
               <label htmlFor='file' className='loginImg'>
                 <PermMedia htmlColor='tomato' className='shareIcon' />
                 <span className='shareOptionText'>Add Profile Photo</span>
                 <input
                   required
-                  // style={{ display: "none" }}
+                  style={{ display: "none" }}
                   type='file'
                   name='file'
                   id='file'

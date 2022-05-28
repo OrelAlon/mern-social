@@ -91,3 +91,9 @@
   cursor: pointer;
   opacity: 0.7;
 }
+.select {
+  padding: 10px;
+  border: solid rgb(172, 170, 170) 1px;
+  border-radius: 10px;
+  margin: 6px;
+}
