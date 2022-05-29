@@ -22,7 +22,7 @@ const Profile = () => {
     };
     fetchUser();
   }, []);
-
+  console.log(user);
   return (
     <>
       <Navbar />
@@ -33,14 +33,18 @@ const Profile = () => {
             <div className='profileCover'>
               <img
                 className='profileCoverImg'
-                src={user.coverPicture ? user.coverPicture : PF + "noCover.png"}
+                src={
+                  user.coverPicture
+                    ? PF + user.coverPicture
+                    : PF + "noCover.png"
+                }
                 alt=''
               />
               <img
                 className='profileUserImg'
                 src={
                   user.profilePicture
-                    ? user.profilePicture
+                    ? PF + user.profilePicture
                     : PF + "noAvatar.png"
                 }
                 alt=''

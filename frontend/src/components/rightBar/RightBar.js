@@ -10,7 +10,6 @@ const Rightbar = ({ user }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [file, setFile] = useState(null);
 
-  console.log(user._doc);
   useEffect(() => {
     // const getFriends = async () => {
     //   try {
