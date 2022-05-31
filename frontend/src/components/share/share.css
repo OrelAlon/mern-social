@@ -24,7 +24,9 @@
 
 .shareInput {
   border: none;
-  width: 80%;
+  border-radius: 5px;
+  width: 60%;
+  padding: 5px;
 }
 
 .shareInput:focus {
