@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     const user = userId
       ? await User.findById(userId).exec()
       : await User.findOne({ username: username });
-    const { password, updatedAt, ...other } = user;
+    const { password, updatedAt, ...other } = user._doc;
     res.status(200).json(other);
   } catch (err) {
     res.status(500).json("error:" + err);
