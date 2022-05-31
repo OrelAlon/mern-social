@@ -27,6 +27,7 @@ app.use(express.json());
 app.use(helmet());
 // app.use(morgan("common"));
 
+// multer - upload files
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "public/images");
@@ -45,10 +46,13 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
   }
 });
 
+//routes
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/restaurants", restaurantRoute);
+
+// if(process.env.NODE_env)
 
 const PORT = 8000;
 app.listen(PORT, () => {

@@ -23,7 +23,7 @@ const Profile = () => {
     };
     fetchUser();
   }, [username]);
-  console.log(user);
+
   return (
     <>
       <Navbar />

@@ -22,7 +22,7 @@ const PublicPost = ({ post }) => {
   useEffect(() => {
     const fetchUser = async () => {
       const res = await axios.get(`/users/?userId=${post.userId}`);
-      setUser(res.data._doc);
+      setUser(res.data);
     };
     const fetchRestaurant = async () => {
       const res = await axios.get(

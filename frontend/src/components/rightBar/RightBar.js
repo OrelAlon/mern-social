@@ -31,7 +31,7 @@ const Rightbar = ({ user }) => {
   const handleClick = async (e) => {
     e.preventDefault();
     const update = {
-      userId: user._doc._id,
+      userId: user._id,
     };
 
     if (file) {
@@ -48,8 +48,8 @@ const Rightbar = ({ user }) => {
       }
     }
     try {
-      await axios.put("/users/" + user._doc._id, update);
-      window.location.reload();
+      await axios.put("/users/" + user._id, update);
+      // window.location.reload();
     } catch (error) {
       console.log(error);
     }

@@ -13,7 +13,6 @@ import "./restaurant.css";
 const Restaurant = () => {
   const [restaurant, setRestaurant] = useState({});
   const restaurantname = useParams().restaurantname;
-  console.log(restaurant);
 
   useEffect(() => {
     const fetchRestaurant = async () => {
