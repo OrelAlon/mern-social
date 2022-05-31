@@ -25,7 +25,6 @@ const Share = () => {
       restaurantId: restaurantName,
       desc: desc.current.value,
     };
-    console.log(file);
     if (file) {
       const data = new FormData();
       const fileName = Date.now() + file.name;
@@ -40,7 +39,7 @@ const Share = () => {
     }
     try {
       await axios.post("/posts", newPost);
-      // window.location.reload();
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
