@@ -44,6 +44,7 @@ const Restaurant = () => {
               alt=''
             />
           </div>
+
           <div className='restaurantRightBottom'>
             <RestaurantFeed restaurant={restaurant} />
             <Rightbar />
