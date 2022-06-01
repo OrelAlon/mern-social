@@ -3,10 +3,10 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const helmet = require("helmet");
-// const morgan = require("morgan");
 const multer = require("multer");
 const path = require("path");
 // const router = express.Router();
+// const morgan = require("morgan");
 
 // routes
 const userRoute = require("./routes/users");
@@ -52,7 +52,18 @@ app.use("/api/posts", postRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/restaurants", restaurantRoute);
 
-// if(process.env.NODE_env)
+// Serve frontend
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+  app.get("*", (req, res) =>
+    res.sendFile(
+      path.resolve(__dirname, "../", "frontend", "build", "index.html")
+    )
+  );
+} else {
+  app.get("/", (req, res) => res.send("Please set to production"));
+}
 
 const PORT = 8000;
 app.listen(PORT, () => {
