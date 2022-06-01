@@ -16,7 +16,6 @@
   height: 250px;
   object-fit: cover;
   border: 1px solid rgb(191, 186, 186);
-  background-color: pink;
 }
 
 .restaurantImg {
@@ -41,6 +40,7 @@
   justify-content: center;
   font-weight: bold;
   margin-top: 20px;
+  background-color: rgb(206, 205, 203);
 }
 
 .restaurantInfoDesc {
