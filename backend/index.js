@@ -69,3 +69,5 @@ const PORT = 8000;
 app.listen(PORT, () => {
   console.log("connecteddddd");
 });
+
+//from the backend  ==> npm run dev
