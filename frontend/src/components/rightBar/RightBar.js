@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { PermMedia } from "@material-ui/icons";
+import { useNavigate } from "react-router-dom";
+
 import Favorite from "../favorite/Favorite";
 
 import axios from "axios";
@@ -9,8 +11,15 @@ import "./rightbar.css";
 const Rightbar = ({ user }) => {
   const [restaurantsList, setRestaurantsList] = useState([]);
   const [file, setFile] = useState(null);
+
+  const navigate = useNavigate();
+
   // const [updateUser, setUpdateUser] = useState();
 
+  // const submitHandler = async (e) => {
+  //   e.preventDefault();
+  //   console.log(file);
+  // };
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurants/restaurants`);
@@ -20,38 +29,38 @@ const Rightbar = ({ user }) => {
     fetchRestaurants();
   }, []);
 
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
+  const submitHandler = async (e) => {
+    e.preventDefault();
 
-  //   const update = {
-  //     userId: user._id,
-  //   };
-  //   if (file) {
-  //     const data = new FormData();
-  //     const fileName = Date.now() + file.name;
-  //     data.append("name", fileName);
-  //     data.append("file", file);
-  //     update.profilePicture = fileName;
+    const update = {
+      userId: user._id,
+    };
+    if (file) {
+      const data = new FormData();
+      const fileName = Date.now() + file.name;
+      data.append("name", fileName);
+      data.append("file", file);
+      update.profilePicture = fileName;
 
-  //     try {
-  //       await axios.post("/upload", data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   }
-  //   try {
-  //     await axios.put("/users/" + user._id, update);
-  //     await localStorage.setItem("user", JSON.stringify(user));
+      try {
+        await axios.post("/upload", data);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    try {
+      await axios.put("/users/" + user._id, update);
+      await localStorage.setItem("user", JSON.stringify(user));
 
-  //     try {
-  //       window.location.reload();
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+      try {
+        navigate("/login");
+      } catch (error) {
+        console.log(error);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const HomeRightbar = () => {
     return (
@@ -90,18 +99,18 @@ const Rightbar = ({ user }) => {
                 : "Complicated"}
             </span>
           </div>
-          <form className='changePicture'>
-            <label htmlFor='file' className='shareOption'>
-              <PermMedia htmlColor='tomato' className='shareIcon' />
-              <span className='shareOptionText'>Change Picture</span>
-              <input
-                style={{ display: "none" }}
-                type='file'
-                id='file'
-                accept='.png,.jpeg,.jpg,.jfif'
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </label>{" "}
+          <form className='changePicture' onSubmit={submitHandler}>
+            {/* <label htmlFor='file' className='shareOption'> */}
+            <PermMedia htmlColor='tomato' className='shareIcon' />
+            <span className='shareOptionText'>Change Picture</span>
+            <input
+              // style={{ display: "none" }}
+              type='file'
+              id='file'
+              accept='.png,.jpeg,.jpg,.jfif'
+              onChange={(e) => setFile(e.target.files[0])}
+            />
+            {/* </label>{" "} */}
             <button className='saveButton' type='submit'>
               Save
             </button>
