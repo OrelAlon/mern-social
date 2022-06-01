@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const helmet = require("helmet");
 const multer = require("multer");
 const path = require("path");
+const port = process.env.PORT || 8000;
+
 // const router = express.Router();
 // const morgan = require("morgan");
 
@@ -65,8 +67,7 @@ if (process.env.NODE_ENV === "production") {
   app.get("/", (req, res) => res.send("Please set to production"));
 }
 
-const PORT = 8000;
-app.listen(PORT, () => {
+app.listen(port, () => {
   console.log("connecteddddd");
 });
 
