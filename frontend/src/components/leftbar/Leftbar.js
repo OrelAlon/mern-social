@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import {
   RssFeed,
   Chat,
@@ -54,7 +56,9 @@ const Leftbar = () => {
             <span className='leftbarListItemText'>Courses</span>
           </li>
         </ul>
-        <button className='leftbarButton'>Add Restaurant</button>
+        <Link to='/addrestaurant' className='linkTimeLine'>
+          <button className='leftbarButton'>Add Restaurant</button>
+        </Link>
       </div>
     </div>
   );

@@ -43,6 +43,8 @@
   padding: 10px;
   border-radius: 5px;
   font-weight: 500;
+  cursor: pointer;
+  border: rgb(134, 134, 134) 1px solid;
 }
 
 .leftbarHr {
