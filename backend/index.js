@@ -71,4 +71,4 @@ app.listen(port, () => {
   console.log("connecteddddd");
 });
 
-//from the backend  ==> npm run dev
+// from the backend folder ==> npm run dev

@@ -12,4 +12,5 @@ root.render(
   </React.StrictMode>
 );
 
-//from the backend  ==> npm run dev
+// from the backend folder ==> npm run dev
+// only frontend from here backend  ==> npm start
