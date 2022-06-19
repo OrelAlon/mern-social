@@ -54,7 +54,7 @@ const Leftbar = () => {
             <span className='leftbarListItemText'>Courses</span>
           </li>
         </ul>
-        <button className='leftbarButton'>Show More</button>
+        <button className='leftbarButton'>Add Restaurant</button>
       </div>
     </div>
   );
