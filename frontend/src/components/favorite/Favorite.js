@@ -9,8 +9,6 @@ import "./favorite.css";
 function Favorite({ restaurant }) {
   const [restaurantsList, setRestaurantsList] = useState([]);
 
-  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
-
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurants/restaurants`);

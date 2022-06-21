@@ -1,4 +1,4 @@
-import { Search, Person, Chat, Notifications } from "@material-ui/icons";
+import { Search, Person, Chat } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";

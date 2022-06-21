@@ -4,7 +4,7 @@ import axios from "axios";
 import React from "react";
 
 import noAvatar from "../../assets/noAvatar.png";
-import { PermMedia, Label, Room, EmojiEmotions } from "@material-ui/icons";
+import { PermMedia, Label } from "@material-ui/icons";
 
 import "./share.css";
 
