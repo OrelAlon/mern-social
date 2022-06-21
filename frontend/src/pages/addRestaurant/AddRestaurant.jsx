@@ -47,9 +47,9 @@ const AddRestaurant = () => {
     }
   };
 
-  const submitBtn = () => {
-    navigate("/login");
-  };
+  // const submitBtn = () => {
+  //   navigate("/login");
+  // };
 
   return (
     <>
@@ -93,7 +93,7 @@ const AddRestaurant = () => {
               />
             </label>
           </div>
-          <button className='loginButton' type='submit' onClick={submitBtn}>
+          <button className='loginButton' type='submit'>
             Add
           </button>
         </form>
