@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { PermMedia } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
+import React from "react";
 
 import Favorite from "../favorite/Favorite";
 

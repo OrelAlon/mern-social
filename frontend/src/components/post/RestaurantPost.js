@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import React from "react";
 
 import { format } from "timeago.js";
 
@@ -77,7 +78,7 @@ const RestaurantPost = ({ post }) => {
           </div>
           <div className='postBottomRight'>
             {" "}
-            <span className='postText'>{post?.desc}</span>
+            <span className='postText'>{post.desc}</span>
           </div>
         </div>
       </div>

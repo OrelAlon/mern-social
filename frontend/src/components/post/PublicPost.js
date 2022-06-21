@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import React from "react";
 
 import { format } from "timeago.js";
 
@@ -91,7 +92,7 @@ const PublicPost = ({ post }) => {
           </div>
           <div className='postBottomRight'>
             {" "}
-            <h3 className='postText'>{post?.desc}</h3>
+            <h3 className='postText'>{post.desc}</h3>
           </div>
         </div>
       </div>

@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
+import React from "react";
 
 import axios from "axios";
 
-import Share from "../share/Share";
 import RestaurantPost from "../post/RestaurantPost";
 
 import "./feed.css";

@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import noAvatar from "../../assets/noAvatar.png";
+import React from "react";
 
 import "./navbar.css";
 

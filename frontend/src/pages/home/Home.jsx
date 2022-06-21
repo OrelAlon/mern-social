@@ -1,3 +1,5 @@
+import React from "react";
+
 import Navbar from "../../components/navbar/Navbar";
 import Leftbar from "../../components/leftbar/Leftbar";
 import Rightbar from "../../components/rightbar/Rightbar";
@@ -5,7 +7,7 @@ import PublicFeed from "../../components/feed/PublicFeed";
 
 import "./home.css";
 
-const Home = () => {
+function Home() {
   return (
     <>
       <Navbar />
@@ -16,6 +18,6 @@ const Home = () => {
       </div>
     </>
   );
-};
+}
 
 export default Home;
