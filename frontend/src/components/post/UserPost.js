@@ -4,7 +4,7 @@ import axios from "axios";
 import React from "react";
 
 import { format } from "timeago.js";
-// import { MoreVert } from "@material-ui/icons";
+
 import { DeleteForever } from "@material-ui/icons";
 
 import "./post.css";

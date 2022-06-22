@@ -52,7 +52,6 @@ const PublicPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            {/* <Link to={`/profile/${user.username}`}> */}
             <img
               className='postProfileImg'
               src={
@@ -62,7 +61,6 @@ const PublicPost = ({ post }) => {
               }
               alt=''
             />
-            {/* </Link> */}
             <span className='postUsername'>
               <span className='bold'> {user.username} </span>in{" "}
               <span className='bold'>{restaurant.restaurantname}</span>

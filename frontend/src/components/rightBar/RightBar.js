@@ -15,12 +15,6 @@ const Rightbar = ({ user }) => {
 
   const navigate = useNavigate();
 
-  // const [updateUser, setUpdateUser] = useState();
-
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   console.log(file);
-  // };
   useEffect(() => {
     const fetchRestaurants = async () => {
       const res = await axios.get(`/restaurants/restaurants`);

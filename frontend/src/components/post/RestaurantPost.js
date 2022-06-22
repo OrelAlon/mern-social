@@ -11,9 +11,10 @@ const RestaurantPost = ({ post }) => {
   const [like, setLike] = useState(post.likes.length);
   const [isLiked, setIsLiked] = useState(false);
   const [user, setUser] = useState({});
-  // const [restaurant, setRestaurant] = useState({});
   const { user: currentUser } = useContext(AuthContext);
+
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   useEffect(() => {
     setIsLiked(post.likes.includes(currentUser._id));
   }, [currentUser._id, post.likes]);
@@ -42,7 +43,6 @@ const RestaurantPost = ({ post }) => {
       <div className='postWrapper'>
         <div className='postTop'>
           <div className='postTopLeft'>
-            {/* <Link to={`/profile/${user.username}`}> */}
             <img
               className='postProfileImg'
               src={
@@ -52,7 +52,6 @@ const RestaurantPost = ({ post }) => {
               }
               alt=''
             />
-            {/* </Link> */}
             <span className='postUsername'>from {user.username} </span>
             <span className='postDate'>{format(post.createdAt)}</span>
           </div>
