@@ -18,7 +18,7 @@
 }
 .imgLog {
   height: 50px;
-  width: 150px;
+  width: 180px;
   background-color: white;
   margin: 20px;
   cursor: pointer;
@@ -26,7 +26,7 @@
   border: 1px solid gray;
   font-size: 18px;
   padding-left: 20px;
-  margin: 6px;
+  margin: auto;
 }
 .loginImg {
   display: flex;
@@ -35,4 +35,19 @@
   margin-top: 10px;
   cursor: pointer;
   margin-right: 10px;
+  font-size: larger;
+}
+.restaurantInput {
+  height: 50px;
+  width: 60%;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+  padding-left: 20px;
+  margin: auto;
+}
+
+.loginButton {
+  width: 60%;
+  margin: auto;
 }

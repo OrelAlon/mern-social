@@ -55,8 +55,6 @@ const AddRestaurant = () => {
     <>
       <Navbar />
       <div className='addRestaurant'>
-        <h1>AddRestaurant</h1>
-
         <form action='submit' className='formBox' onSubmit={handleSubmit}>
           <label htmlFor='file' className='loginImg'>
             Add Restaurant Name
